@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import Input from './input'
 import {useDispatch} from 'react-redux'
 
-const SearchStyled = styled.div``
+const SearchStyled = styled.div`
+    display: flex;
+`
 
 function Search(){
     const [inputValue, setInputValue] = useState('')
