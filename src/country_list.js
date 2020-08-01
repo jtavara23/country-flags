@@ -17,11 +17,18 @@ const CountryListStyled = styled.div`
 function CountryList(){
     const dispatch = useDispatch()
     
-    const countryList = useSelector( (state) => state.countryList);
-
     const [inputValue, setInputValue] = useState('')
     const countryListByName = useSelector((state) => state.countryListByName)
 
+    const countryList = useSelector((state) => {
+        if ('' !== state.filterByRegion) {
+          return state.countryListByRegion;
+        }
+        if(countryListByName.length > 0){
+            return countryListByName
+        }
+        return state.countryList;
+    })
 
     console.log(">> ",countryList);
     
@@ -74,7 +81,7 @@ function CountryList(){
             }
         
         {
-             (countryListByName.length > 0 ? countryListByName : countryList).map( ({flag, name, region, population,capital})=>{
+             countryList.map( ({flag, name, region, population,capital})=>{
                 return(
                     <Country
                     img = {flag}
