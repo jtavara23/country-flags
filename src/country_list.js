@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import Country from './country' 
+import {useSelector, useDispatch} from 'react-redux' //hook
 
 //grid
 const CountryListStyled = styled.div`
@@ -14,8 +15,11 @@ const CountryListStyled = styled.div`
 
 
 function CountryList(){
-
-    const [countryList, setCountryList] = useState([]);
+    const dispatch = useDispatch()
+    const countryList = useSelector( (state) => state.countryList);
+    console.log(">> ",countryList);
+    //dejar de usar estado Local
+    //const [countryList, setCountryList] = useState([]); 
 
     //hook
     useEffect( ()=> {
@@ -24,8 +28,12 @@ function CountryList(){
             return response.json();
         })
         .then( (data)=> {
-            setCountryList(data);  
-            console.log(data);
+            //setCountryList(data);  
+            dispatch({
+                type: 'SET_COUNTRY_LIST',
+                payload: data
+            })
+            console.log("my data:",data.length);
         })
         .catch(()=>{
             console.log("Error fetching data country")

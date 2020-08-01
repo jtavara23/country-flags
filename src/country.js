@@ -39,11 +39,10 @@ function Country({
     <CountryStyled>
      <img loading="lazy" src ={img} alt="" />
      <div className="details">
- 
-    <h2>{name}</h2>
-    <p><strong>Population: </strong>{population}</p>
-    <p><strong>Region: </strong>{region}</p>
-    <p><strong>Capital:</strong>{capital}</p>
+        <h2>{name}</h2>
+        <p><strong>Population: </strong>{population}</p>
+        <p><strong>Region: </strong>{region}</p>
+        <p><strong>Capital:</strong>{capital}</p>
     </div>
     </CountryStyled>
   )
