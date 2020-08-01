@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import styled from 'styled-components'
 import Country from './country' 
-import Input from './input' 
 import {useSelector, useDispatch} from 'react-redux' //hook
 
 //grid
@@ -18,7 +17,6 @@ const CountryListStyled = styled.div`
 function CountryList(){
     const dispatch = useDispatch()
     
-    const [inputValue, setInputValue] = useState('')
     const countryListByName = useSelector((state) => state.countryListByName)
 
     const countryList = useSelector((state) => {
@@ -51,36 +49,9 @@ function CountryList(){
         })
     }, [dispatch])
 
-    /* FILTER BY NAME STATES */
-    const filterByName = (e) =>{
-        setInputValue(e.target.value)
-        dispatch({
-          type: 'FILTER_BY_NAME',
-          payload: e.target.value
-        })
-      }
-      const clearInput = () => {
-        dispatch({
-          type: 'FILTER_BY_NAME',
-          payload: ''
-        })
-        setInputValue('')
-      }
 
   return (
     <CountryListStyled>
-        
-        <Input placeholder = 'Search a Country' value={inputValue} onChange={filterByName} />
-            {
-                inputValue 
-            }
-            {
-                countryListByName.length === 0 && inputValue &&
-                <p>
-                    <strong>{inputValue}</strong> Not found in countries
-                </p>
-            }
-        
         {
              countryList.map( ({flag, name, region, population,capital})=>{
                 return(

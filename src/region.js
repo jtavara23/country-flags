@@ -12,7 +12,7 @@ const filterByRegionAction = (regionSelected) => {
 const RegionStyled = styled.div`
 `
 
-function Region(){
+export const Region = () => {
     const dispatch = useDispatch();
     const filterByRegion = useSelector((state) => state.filterByRegion);
 
@@ -42,5 +42,5 @@ function Region(){
   )
 }
  
-export default Region
+
  
