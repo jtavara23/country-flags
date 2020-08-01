@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import styled from 'styled-components'
 import Country from './country' 
+import Input from './input' 
 import {useSelector, useDispatch} from 'react-redux' //hook
 
 //grid
@@ -69,7 +70,7 @@ function CountryList(){
   return (
     <CountryListStyled>
         
-        <input type="text" value={inputValue} onChange={filterByName} />
+        <Input placeholder = 'Search a Country' value={inputValue} onChange={filterByName} />
             {
                 inputValue 
             }
