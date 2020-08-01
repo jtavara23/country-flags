@@ -16,11 +16,15 @@ const CountryListStyled = styled.div`
 
 function CountryList(){
     const dispatch = useDispatch()
+    
     const countryList = useSelector( (state) => state.countryList);
-    console.log(">> ",countryList);
-    //dejar de usar estado Local
-    //const [countryList, setCountryList] = useState([]); 
 
+    const [inputValue, setInputValue] = useState('')
+    const countryListByName = useSelector((state) => state.countryListByName)
+
+
+    console.log(">> ",countryList);
+    
     //hook
     useEffect( ()=> {
         fetch('https://restcountries.eu/rest/v2/all')
@@ -28,7 +32,6 @@ function CountryList(){
             return response.json();
         })
         .then( (data)=> {
-            //setCountryList(data);  
             dispatch({
                 type: 'SET_COUNTRY_LIST',
                 payload: data
@@ -38,12 +41,40 @@ function CountryList(){
         .catch(()=>{
             console.log("Error fetching data country")
         })
-    }, [])
+    }, [dispatch])
+
+    /* FILTER BY NAME STATES */
+    const filterByName = (e) =>{
+        setInputValue(e.target.value)
+        dispatch({
+          type: 'FILTER_BY_NAME',
+          payload: e.target.value
+        })
+      }
+      const clearInput = () => {
+        dispatch({
+          type: 'FILTER_BY_NAME',
+          payload: ''
+        })
+        setInputValue('')
+      }
 
   return (
     <CountryListStyled>
+        
+        <input type="text" value={inputValue} onChange={filterByName} />
+            {
+                inputValue 
+            }
+            {
+                countryListByName.length === 0 && inputValue &&
+                <p>
+                    <strong>{inputValue}</strong> Not found in countries
+                </p>
+            }
+        
         {
-            countryList.map( ({flag, name, region, population,capital})=>{
+             (countryListByName.length > 0 ? countryListByName : countryList).map( ({flag, name, region, population,capital})=>{
                 return(
                     <Country
                     img = {flag}
