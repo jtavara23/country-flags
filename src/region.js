@@ -9,7 +9,7 @@ const filterByRegionAction = (regionSelected) => {
 	};
 };
 
-const RegionStyled = styled.div`
+const RegionStyled = styled.select`
 	padding: 1.3em;
 	border: none;
 	border-radius: 5px;
@@ -35,15 +35,13 @@ export const Region = () => {
 	};
 
 	return (
-		<RegionStyled>
-			<select onChange={onRegionChange} value={filterByRegion}>
-				<option value="">Filter by region</option>
-				<option value="Africa">Africa</option>
-				<option value="Americas">Americas</option>
-				<option value="Asia">Asia</option>
-				<option value="Europe">Europe</option>
-				<option value="Oceania">Oceania</option>
-			</select>
+		<RegionStyled onChange={onRegionChange} value={filterByRegion}>
+			<option value="">Filter by region</option>
+			<option value="Africa">Africa</option>
+			<option value="Americas">Americas</option>
+			<option value="Asia">Asia</option>
+			<option value="Europe">Europe</option>
+			<option value="Oceania">Oceania</option>
 		</RegionStyled>
 	);
 };
