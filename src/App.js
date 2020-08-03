@@ -7,6 +7,7 @@ import { createStore } from 'redux';
 import CountryList from './country_list';
 import reducer from './reducer';
 import ActionList from './action-list';
+import Header from './header';
 
 const initialState = {
 	countryList: [],
@@ -21,6 +22,7 @@ function App() {
 	return (
 		<Provider store={store}>
 			<div className="App">
+				<Header />
 				<ActionList />
 				<CountryList />
 			</div>
