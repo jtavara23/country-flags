@@ -21,7 +21,8 @@ const HeaderStyled = styled.div`
 		color: var(--dark);
 	}
 	.dark-mode {
-		cursor: pointer;
+		cursor: pointer; //clickable
+
 		.moon {
 			transform: rotate(-25deg);
 			display: inline-flex;
@@ -43,8 +44,10 @@ const HeaderStyled = styled.div`
 	}
 `;
 
-function Header() {
-	function handleClick() {}
+function Header({ setDarkMode, darkMode }) {
+	function handleClick() {
+		setDarkMode(!darkMode);
+	}
 
 	return (
 		<HeaderStyled>
@@ -57,7 +60,7 @@ function Header() {
 					<div className="dark-mode">
 						<p onClick={handleClick}>
 							<span className="moon">
-								<i className="far fa-moon" />
+								{darkMode ? <i className="fas fa-moon" /> : <i className="far fa-moon" />}
 							</span>
 							Dark Mode
 						</p>

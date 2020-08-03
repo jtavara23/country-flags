@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 
-const filterByRegionAction = (regionSelected) => {
+const actionFilterByRegion = (regionSelected) => {
 	return {
 		type: 'FILTER_BY_REGION',
 		payload: { regionSelected }
@@ -31,7 +31,7 @@ export const Region = () => {
 	const onRegionChange = (selectEvent) => {
 		const value = selectEvent.target.value;
 
-		dispatch(filterByRegionAction(value));
+		dispatch(actionFilterByRegion(value));
 	};
 
 	return (

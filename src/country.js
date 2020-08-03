@@ -66,7 +66,7 @@ function Country({
 					{region}
 				</p>
 				<p>
-					<strong>Capital:</strong>
+					<strong>Capital: </strong>
 					{capital}
 				</p>
 			</div>

@@ -44,7 +44,7 @@ function App() {
 		<main class={mainClass}>
 			<Provider store={store}>
 				<Router>
-					<Header />
+					<Header setDarkMode={setDarkMode} darkMode={darkMode} />
 					<Switch>
 						<Route path="/country/:id" component={CountryPage} />
 						<Route path="/">
