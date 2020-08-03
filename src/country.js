@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 
 const CountryStyled = styled.div`
-	width: 264px;
 	text-align: left;
 	border-radius: 5px;
 
