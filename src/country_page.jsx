@@ -16,12 +16,12 @@ function CountryPage({ match }) {
 	useEffect(
 		() => {
 			if (!country) {
-				fetch(`https://restcountries.eu/rest/v2/name/${match.params.id.toLowerCase()}`)
+				fetch(`https://restcountries.eu/rest/v2/alpha/${match.params.id.toLowerCase()}`)
 					.then((response) => {
 						return response.json();
 					})
 					.then((data) => {
-						setCountry(data[0]);
+						setCountry(data);
 					})
 					.catch(() => {
 						console.log('Error fetching data for selected country');
@@ -35,7 +35,6 @@ function CountryPage({ match }) {
 	return (
 		<CountryPageStyled>
 			<Wrapper>
-				{match.params.id}
 				<CountrySelected {...country} />
 			</Wrapper>{' '}
 		</CountryPageStyled>

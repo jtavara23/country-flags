@@ -45,12 +45,13 @@ function Country({
 	name,
 	population,
 	region,
-	capital
+	capital,
+	alpha2Code
 }) {
 	const history = useHistory();
 
 	function handleClick() {
-		history.push(`/country/${slugify(name)}`);
+		history.push(`/country/${slugify(alpha2Code)}`);
 	}
 
 	return (
