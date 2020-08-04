@@ -21,16 +21,15 @@ function CountryList() {
 	const countryListByName = useSelector((state) => state.countryListByName);
 
 	const countryList = useSelector((state) => {
-		if ('' !== state.filterByRegion) {
+		if (state.filterByRegion !== '') {
+			// filterbyRegion gets changeed on reducer.jsx when got dispatched by actionFilterByRegion
 			return state.countryListByRegion;
 		}
 		if (countryListByName.length > 0) {
-			return countryListByName;
+			return countryListByName; //return value from search function
 		}
-		return state.countryList;
+		return state.countryList; //return everything
 	});
-
-	console.log('>> ', countryList);
 
 	//hook
 	useEffect(
@@ -44,7 +43,6 @@ function CountryList() {
 						type: 'SET_COUNTRY_LIST',
 						payload: data
 					});
-					console.log('my data:', data.length);
 				})
 				.catch(() => {
 					console.log('Error fetching data country');

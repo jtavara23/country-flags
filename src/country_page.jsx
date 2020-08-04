@@ -28,8 +28,6 @@ function CountryPage({ match, history }) {
 	const selectedCountry = useSelector((state) =>
 		state.countryList.find((item) => item.alpha2Code === match.params.id)
 	);
-
-	console.log('>>>', selectedCountry);
 	//hook
 	const [ country, setCountry ] = useState(selectedCountry);
 	useEffect(
