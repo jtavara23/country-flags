@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
+import slugify from 'slugify';
 
 const CountryStyled = styled.div`
 	text-align: left;
@@ -40,7 +41,7 @@ const CountryStyled = styled.div`
 
 function Country({
 	//propiedades
-	img,
+	flag,
 	name,
 	population,
 	region,
@@ -49,12 +50,12 @@ function Country({
 	const history = useHistory();
 
 	function handleClick() {
-		history.push(`/country/${name}`);
+		history.push(`/country/${slugify(name)}`);
 	}
 
 	return (
 		<CountryStyled onClick={handleClick}>
-			<img loading="lazy" src={img} alt="" />
+			<img loading="lazy" src={flag} alt="" />
 			<div className="details">
 				<h2>{name}</h2>
 				<p>

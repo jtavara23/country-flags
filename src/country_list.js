@@ -56,8 +56,8 @@ function CountryList() {
 	return (
 		<Wrapper>
 			<CountryListStyled>
-				{countryList.map(({ flag, name, region, population, capital }) => {
-					return <Country img={flag} name={name} population={population} region={region} capital={capital} />;
+				{countryList.map((country) => {
+					return <Country {...country} />;
 				})}
 			</CountryListStyled>
 		</Wrapper>
