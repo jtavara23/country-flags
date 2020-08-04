@@ -41,7 +41,7 @@ function App() {
 	}, []);
 
 	return (
-		<main class={mainClass}>
+		<main className={mainClass}>
 			<Provider store={store}>
 				<Router>
 					<Header setDarkMode={setDarkMode} darkMode={darkMode} />
